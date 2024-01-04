@@ -21,17 +21,18 @@ const middleware = (app) => {
     app.use(express.static('public'))
     // to utilize json we can add this:
     app.use(express.json())
+    //session function for user login
+    app.use(
+        session({
+            secret: process.env.SECRET,
+            store: MongoStore.create({
+            mongoUrl: process.env.DATABASE_URL
+        }),
+        saveUninitialized: true,
+        resave: false
+        })
+    )
 }
-//    app.use(
-//                session({
-//        secret: process.env.SECRET,
-//        store: MongoStore.create({
-//        mongoUrl: process.env.DATABASE_URL
-//        }),
-//        saveUninitialized: true,
-//        resave: false
-//        })
-//        )
 
 //Export the Middleware Function
 module.exports = middleware

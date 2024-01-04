@@ -1,7 +1,6 @@
 //Import Dependencies
 require('dotenv').config() // Load my ENV file's variables
 const mongoose = require('mongoose') // import the mongoose library
-
 //Database Connection
 // this is where we will set up our inputs for our database connect function
 const DATABASE_URL = process.env.DATABASE_URL

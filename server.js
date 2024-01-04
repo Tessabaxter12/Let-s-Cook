@@ -20,9 +20,9 @@ middleware(app)
 
 //Routes
 app.get('/', (req, res) => {
-//    const { username, loggedIn, userId } = req.session
+    const { username, loggedIn, userId } = req.session
 //    res.send('the app is connected')
-    res.render('home.ejs')
+    res.render('home.ejs', { username, loggedIn, userId})
 })
 
 app.use('/users', UserRouter)
