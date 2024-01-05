@@ -29,18 +29,14 @@ app.use('/users', UserRouter)
 app.use('/recipes', RecipeRouter)
 
 //error page
-//app.get('/error', (req, res) => {
-//    const error = req.query.error || 'Ops! Something went wrong...try again'
-
-//    const { username, loggedIn, userId } = req.session
-
-//    res.send(error)
-//    res.render('error.ejs', { error, userId, username, loggedIn })
-//})
+app.get('/error', (req, res) => {
+    const error = req.query.error || 'Try again'
+    const { username, loggedIn, userId } = req.session
+    res.render('error.ejs', { error, userId, username, loggedIn })
+})
 
 //Server Listener
 const PORT = process.env.PORT
-
 app.listen(PORT, () => {
     console.log('Your server is running')
 })
