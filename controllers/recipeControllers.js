@@ -19,7 +19,7 @@ router.get('/all', (req, res) => {
             console.log('this came back from the api: \n', apiRes.data[0])
             // apiRes.data is an array of counvtry objects
             //res.send(apiRes.data)
-            res.render('recipes/search', { recipes: apiRes.data, username, userId, loggedIn})
+            res.render('recipes/search', {recipes: apiRes.data.recipes, username, userId, loggedIn})
         })
         // if something goes wrong, display an error page
         .catch(err => {

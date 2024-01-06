@@ -1,13 +1,9 @@
 <%- include('../partials/header') %>
 <div class="container center">
     <div class="container row text-center">
-        <% recipes.forEach(function(p) {%>
-            <div class="card mt-3 me-3 countryCard">
-                <img src="<%= p.s.svg %>" alt="flag of country" class="card-img-top mt-3">
-                <div class="card-body">
-                    <h5 class="card-title"><%= p.name.official %></h5>
-                    <a href="/places/<%= p.name.official %>" class="btn">Learn More</a>
-                </div>
+        <% recipes.forEach(function(recipe) {%>
+            <div class="card mt-3 me-3 recipeCard">
+                <img src="<%= recipe.image %>" alt="recipe image" class="card-img-top mt-3">
             </div>
         <% }) %>
     </div>
