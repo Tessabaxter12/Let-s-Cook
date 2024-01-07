@@ -1,11 +1,38 @@
-<%- include('../partials/header') %>
-<div class="container center">
-    <div class="container row text-center">
-        <% recipes.forEach(function(recipe) {%>
-            <div class="card mt-3 me-3 recipeCard">
-                <img src="<%= recipe.image %>" alt="recipe image" class="card-img-top mt-3">
-            </div>
-        <% }) %>
-    </div>
-</div>
-<%- include('../partials/footer') %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Next Recipe</title>
+</head>
+
+<body>
+
+<button id="refreshButton">Next Recipe</button>
+
+<script>
+document.getElementById('refreshButton').addEventListener('click', function() {
+    location.reload();
+});
+</script> 
+<style>
+    body {  background-color: brown;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            align-items: center; 
+    } 
+    h2   {color: white}
+
+    #refreshButton {
+    background-color: black !important;
+    color: white;
+    display: block;
+    margin: 0 auto;
+    }
+
+</style>
+    <% recipes.forEach(function(recipe) {%>
+            <h2 class="title"><%= recipe.title %></h2>
+            <img src="<%= recipe.image %>" alt="recipe image" width="250" height="250">
+    <% }) %>
+</body>
+</html>

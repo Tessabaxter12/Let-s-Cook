@@ -11,11 +11,12 @@
         </button>
         <div id="navbarNav" class="collapse navbar-collapse me-3">
             <% if (loggedIn) {%>
-                <a href="/recipes/all" class="nav-link text-light me-3">Search By Ingredients</a>
+                <a href="/recipes/all" class="nav-link text-light me-3">Search All Recipes</a>
+                <a href="/recipes/ingredient" class="nav-link text-light me-3">Search By Ingredients</a>
                 <a href="/recipes/favorite" class="nav-link text-light me-3">My Recipes</a>
                 <a href="/users/logout" class="nav-link text-light me-3">Log Out</a>
             <%} else {%>
-                <a href="/recipes/all" class="nav-link text-light me-3">Search By Ingredients</a>                    <a href="/users/signup" class="nav-link text-light me-3">Sign Up</a>
+                <a href="/recipes/all" class="nav-link text-light me-3">Search All Recipes</a>
                 <a href="/users/login" class="nav-link text-light me-3">Log In</a>
             <% } %>
         </div>
