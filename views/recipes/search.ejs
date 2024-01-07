@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Next Recipe</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lets-Cook App</title>
 </head>
-
+<div class="container">
+</div>
 <body>
-
+<h2>Search All Recipes</h2>
 <button id="refreshButton">Next Recipe</button>
 
 <script>
@@ -20,19 +23,27 @@ document.getElementById('refreshButton').addEventListener('click', function() {
             flex-direction: column;
             align-items: center; 
     } 
-    h2   {color: white}
+    h2, h5   {color: white}
 
-    #refreshButton {
+    #refreshButton, #goHomeButton {
     background-color: black !important;
     color: white;
     display: block;
-    margin: 0 auto;
+    margin-top: 20px;
     }
-
 </style>
     <% recipes.forEach(function(recipe) {%>
             <h2 class="title"><%= recipe.title %></h2>
             <img src="<%= recipe.image %>" alt="recipe image" width="250" height="250">
+            <h5 class="id"><%= recipe.id %></h5>
     <% }) %>
+    
+    <button id="goHomeButton">Home Page</button>
+    <script>
+    document.getElementById('goHomeButton').addEventListener('click', function() {
+        window.location.href = '/'
+    });
+    </script> 
+
 </body>
 </html>
