@@ -76,7 +76,24 @@ a    {
     margin: 30px;
 }
 
-#refreshButton {
-    background-color: black !important;
-    color: white;
+.button-container {
+    display: flex;
+}
+#firstButton {
+background-color: black !important;
+color:  beige;
+display: block;
+margin-top: 20px;
+}
+#secondButton {
+background-color: beige !important;
+color: black;
+display: block;
+margin-top: 20px;
+}
+#recipesButton {
+background-color: black !important;
+color:  beige;
+display: block;
+margin-top: 20px; 
 }

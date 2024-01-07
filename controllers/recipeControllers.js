@@ -28,5 +28,30 @@ router.get('/all', (req, res) => {
         })
 })
 
+// POST -> /places/add
+// gets data from the all countries show pages and adds to the users list
+//router.post('/add', (req, res) => {
+//    const { username, loggedIn, userId } = req.session
+
+//    const thePlace = req.body
+//    thePlace.owner = userId
+    // default value for a checked checkbox is 'on'
+    // this line of code converts that two times
+    // which results in a boolean value
+  //  thePlace.visited = !!thePlace.visited
+  //  thePlace.wishlist = !!thePlace.wishlist
+  //  thePlace.favorite = !!thePlace.favorite
+
+ //   Place.create(thePlace)
+ //       .then(newPlace => {
+            // res.send(newPlace)
+ //           res.redirect(`/places/mine`)
+ //       })
+ //       .catch(err => {
+ //           console.log('error')
+ //           res.redirect(`/error?error=${err}`)
+ //       })
+//})
+
 //Export Router
 module.exports = router

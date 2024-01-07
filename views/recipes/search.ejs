@@ -2,48 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lets-Cook App</title>
 </head>
-<div class="container">
-</div>
 <body>
-<h2>Search All Recipes</h2>
-<button id="refreshButton">Next Recipe</button>
-
-<script>
-document.getElementById('refreshButton').addEventListener('click', function() {
-    location.reload();
-});
-</script> 
-<style>
-    body {  background-color: brown;
+    <div class="box4">
+        <h2>Search All Recipes</h2>
+    </div>
+    <div class="button-container">
+        <button id="firstButton">Home Page</button>
+        <button id="secondButton">Next Recipe</button>
+    </div>
+    <script>
+    document.getElementById('firstButton').addEventListener('click', function() {
+        window.location.href = '/'
+    });
+    document.getElementById('secondButton').addEventListener('click', function() {
+        location.reload();
+    });
+    document.getElementById('recipesButton').addEventListener('click', function() {
+        window.location.href = '/recipe'
+    });
+    </script> 
+    <style>
+        body {  background-color: brown;
             display: flex;
             text-align: center;
             flex-direction: column;
             align-items: center; 
-    } 
-    h2, h5   {color: white}
-
-    #refreshButton, #goHomeButton {
-    background-color: black !important;
-    color: white;
-    display: block;
-    margin-top: 20px;
-    }
-</style>
+        } 
+        h5, h3   {color: beige}
+        h2   {color: black}
+    </style>
     <% recipes.forEach(function(recipe) {%>
-            <h2 class="title"><%= recipe.title %></h2>
+            <h3 class="title"><%= recipe.title %></h3>
             <img src="<%= recipe.image %>" alt="recipe image" width="250" height="250">
             <h5 class="id"><%= recipe.id %></h5>
     <% }) %>
-    
-    <button id="goHomeButton">Home Page</button>
-    <script>
-    document.getElementById('goHomeButton').addEventListener('click', function() {
-        window.location.href = '/'
-    });
-    </script> 
-
+    <button id="recipesButton">Click To View Recipe Card</button>
 </body>
 </html>
