@@ -14,19 +14,6 @@ h2   {
 a    {
     color: white;
 }
-
-.box3 { 
-    background-image: url('/images/searchimage.jpeg');
-    width: 100%; 
-    align-items: center; 
-    height: 100%; 
-    background-position: center center; 
-    background-repeat: no-repeat;
-    background-attachment: fixed; 
-    background-size: cover;
-    margin: 10px;
-}
-
 .box2 { 
     background-image: url('images/foodborder.jpeg');
     width: 100%; 
@@ -38,10 +25,8 @@ a    {
     background-attachment: fixed; 
     background-size: cover;
 }
-
-.box4 { 
-    background-image: url('/images/searchpage.avif');
-    color: brown;
+.box3 { 
+    background-image: url('/images/searchimage.jpeg');
     width: 100%; 
     align-items: center; 
     height: 100%; 
@@ -51,7 +36,17 @@ a    {
     background-size: cover;
     margin: 10px;
 }
-
+.box4 { 
+    background-image: url('/images/searchpage.avif');
+    width: 100%;
+    align-items: center; 
+    height: 100%; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: cover;
+    margin: 10px;
+}
 .container1 {
     background-color: brown;
     color: white;
@@ -62,7 +57,6 @@ a    {
     margin: 10px;
     padding: 10px;
 }
-
 .container2 {
     background-color: black;
     display: flex;
@@ -71,14 +65,52 @@ a    {
     align-items: center; 
     padding: 10px;
 }
-
+.container3 {
+    background-color: brown;
+    color: brown;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center; 
+    margin: 10px;
+    padding: 10px;
+}
+.container4 { 
+    background-image: url('/images/searchpage.avif');
+    color: brown;
+    width: 100%; 
+    height: 150px; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: cover;
+    align-items: center; 
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.ingredients-container {
+    background-color:beige;
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    align-items: center; 
+    padding: 10px;
+    width: 700px;
+}
+.instructions-container {
+    text-align: center;
+    width: 700px;
+}
 .btn-group {
     margin: 30px;
 }
-
-.button-container {
+.threebutton-container {
     display: flex;
+    flex-direction: row;
 }
+
 #firstButton {
 background-color: black !important;
 color:  beige;
@@ -91,9 +123,9 @@ color: black;
 display: block;
 margin-top: 20px;
 }
-#recipesButton {
-background-color: black !important;
-color:  beige;
-display: block;
-margin-top: 20px; 
+#thirdButton {
+    background-color: beige !important;
+    color: black;
+    display: block;
+    margin-top: 20px;
 }

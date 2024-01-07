@@ -7,39 +7,62 @@
     <title>Lets-Cook App</title>
 </head>
 <body>
-    <div class="box4">
+    <div class="container4">
         <h2>Search All Recipes</h2>
+            <div class="threebutton-container">
+                <button id="thirdButton">Save Recipe</button>
+                <button id="firstButton">Home Page</button>
+                <button id="secondButton">Next Recipe</button>
+            </div>
+        <script>
+            document.getElementById('thirdButton').addEventListener('click', function() {
+                location.href = 'views/recipes/recipe'
+            });
+            document.getElementById('firstButton').addEventListener('click', function() {
+                window.location.href = '/'
+            });
+            document.getElementById('secondButton').addEventListener('click', function() {
+                location.reload();
+            });
+            </script>
+        </div> 
+        <style>
+            body { background-color: brown;
+                display: flex;
+                text-align: center;
+                flex-direction: column;
+                align-items: center; 
+            } 
+            h1, h5, h3, h4   {color: beige}
+            h2   {color: black}
+            h4 {color: brown}
+        </style>
+        <% recipes.forEach(function(recipe) {%>
+            <h1 class="title"><%= recipe.strMeal %></h1>
+            <img src="<%= recipe.strMealThumb %>" alt="recipe image" width="250" height="200">
+        <% }) %>
+        <h2>Ingredients</h2>
+        <div class="ingredients-container">
+            <% recipes.forEach(function(recipe) {%>
+            <h4 class="instruction"><%= recipe.strMeasure1 %></h5><h5 class="ingredient"><%= recipe.strIngredient1 %></h5>
+            <h4 class="instruction"><%= recipe.strMeasure2 %></h5><h5 class="ingredient"><%= recipe.strIngredient2 %></h5>
+            <h4 class="instruction"><%= recipe.strMeasure3 %></h5><h5 class="ingredient"><%= recipe.strIngredient3 %></h5>
+            <h4 class="instruction"><%= recipe.strMeasure4 %></h5><h5 class="ingredient"><%= recipe.strIngredient4 %></h5>
+            <h4 class="instruction"><%= recipe.strMeasure5 %></h5><h5 class="ingredient"><%= recipe.strIngredient5 %></h5>
+            <h4 class="instruction"><%= recipe.strMeasure6 %></h5><h5 class="ingredient"><%= recipe.strIngredient6 %></h5>
+            <h4 class="instruction"><%= recipe.strMeasure7 %></h5><h5 class="ingredient"><%= recipe.strIngredient7 %></h5>
+            <h4 class="instruction"><%= recipe.strMeasure8 %></h5><h5 class="ingredient"><%= recipe.strIngredient8 %></h5>
+            <h4 class="instruction"><%= recipe.strMeasure9 %></h5><h5 class="ingredient"><%= recipe.strIngredient9 %></h5>
+            <h4 class="instruction"><%= recipe.strMeasure10 %></h5><h5 class="ingredient"><%= recipe.strIngredient10 %></h5>
+            <h4 class="instruction"><%= recipe.strMeasure11 %></h5><h5 class="ingredient"><%= recipe.strIngredient11 %></h5>
+            <% }) %>
+        </div>
+        <h2>Instructions</h2>
+        <div class="instructions-container">
+            <% recipes.forEach(function(recipe) {%>
+            <h3 class="instruction"><%= recipe.strInstructions %></h3>
+            <% }) %>
+        </div>
     </div>
-    <div class="button-container">
-        <button id="firstButton">Home Page</button>
-        <button id="secondButton">Next Recipe</button>
-    </div>
-    <script>
-    document.getElementById('firstButton').addEventListener('click', function() {
-        window.location.href = '/'
-    });
-    document.getElementById('secondButton').addEventListener('click', function() {
-        location.reload();
-    });
-    document.getElementById('recipesButton').addEventListener('click', function() {
-        window.location.href = '/recipe'
-    });
-    </script> 
-    <style>
-        body {  background-color: brown;
-            display: flex;
-            text-align: center;
-            flex-direction: column;
-            align-items: center; 
-        } 
-        h5, h3   {color: beige}
-        h2   {color: black}
-    </style>
-    <% recipes.forEach(function(recipe) {%>
-            <h3 class="title"><%= recipe.title %></h3>
-            <img src="<%= recipe.image %>" alt="recipe image" width="250" height="250">
-            <h5 class="id"><%= recipe.id %></h5>
-    <% }) %>
-    <button id="recipesButton">Click To View Recipe Card</button>
 </body>
 </html>
