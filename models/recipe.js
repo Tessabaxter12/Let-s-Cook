@@ -1,24 +1,25 @@
 //Our Schema and dependencies 
-//const mongoose = require('../utils/connection')
+const mongoose = require('../utils/connection')
 
 // destructuring the Schema and model from mongoose
-//const { Schema, model } = mongoose
+const { Schema, model } = mongoose
 
 //Schema definition
-//const recipeSchema = new Schema({
-//    id: { type: String, required: true },
-//    name: { type: String, required: true },
-//    owner: {
-//        type: Schema.Types.ObjectId,
-//        ref: 'User',
-//        required: true
-//    }
-//}, {
-//    timestamps: true
-//})
+const placeSchema = new Schema({
+    title: { type: String, required: true },
+    wantToTry: { type: Boolean, required: true },
+    favorite: { type: Boolean, required: true },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
+}, {
+    timestamps: true
+})
 
 //create user model
-//const Recipe = model('Recipe', recipeSchema)
+const Recipe = model('Recipe', recipeSchema)
 
 //export user model
-//module.exports = Recipe
+module.exports = Recipe

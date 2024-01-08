@@ -3,7 +3,7 @@
 
 <img src="public/images/RecipeLetsCookIcon.jpeg" width="1000" height="250">
 
-Ever open the fridge and not know what to cook? Let this app help you cook up an idea. Add ingredients you have on hand like chicken, rice, eggs, ect. and the app will sort recipes based on those ingredients.
+Ever open the fridge and not know what to cook? Let this app help you cook up an idea. Search by random recipes or add a main ingredient you have on hand like chicken, fish, eggs, ect. and the app will sort recipes based on that ingredient.
 
 ## Built With: 
 - Node
@@ -24,15 +24,14 @@ Link To Game: https://github.com/Tessabaxter12/Lets-Cook.git
 ## Users Story
 - Make Profile
 - Login
-- Add Ingredients
 - Search Recipes
-- View Recipes
+- Search Recipe By Ingredients
 - Add And Delete A Favortie Recipes to profile
 - Sign Out
 
 ## Wireframe
 
-- Allows The User To Insert Ingredients On Hand From Kitchen.
+- Allows The User To Insert An Ingredient On Hand From Kitchen.
 
 <img src="public/images/KitchenIngredientSearch.jpeg" width="350" height="250">
 
@@ -49,6 +48,5 @@ Link To Game: https://github.com/Tessabaxter12/Lets-Cook.git
 <img src="public/images/RecipeIngredients.jpeg" width="350" height="250">
 
 ## Icebox Features
-- User Can Leave Reviews
 - Search Based On Type Of Meal
 - Search Based On Food Allergies Or Diet

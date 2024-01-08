@@ -7,12 +7,10 @@
     <title>Lets-Cook App</title>
 </head>
 <body>
-    <div class="container4">
-        <h2>Search All Recipes</h2>
+    <div class="container5">
             <div class="threebutton-container">
                 <button id="thirdButton">Save Recipe</button>
                 <button id="firstButton">Home Page</button>
-                <button id="secondButton">Next Recipe</button>
             </div>
         <script>
             document.getElementById('thirdButton').addEventListener('click', function() {
@@ -20,9 +18,6 @@
             });
             document.getElementById('firstButton').addEventListener('click', function() {
                 window.location.href = '/'
-            });
-            document.getElementById('secondButton').addEventListener('click', function() {
-                location.reload();
             });
         </script>
         </div> 
@@ -37,16 +32,6 @@
             h2   {color: black}
             h4 {color: brown}
         </style>
-        <% recipes.forEach(function(recipe) {%>
-            <h1 class="title"><%= recipe.strMeal %></h1>
-            <img src="<%= recipe.strMealThumb %>" alt="recipe image" width="250" height="200">
-        <% }) %>
-        <h2>Instructions</h2>
-        <div class="instructions-container">
-            <% recipes.forEach(function(recipe) {%>
-            <h3 class="instruction"><%= recipe.strInstructions %></h3>
-            <% }) %>
-        </div>
     </div>
 </body>
 </html>

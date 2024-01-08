@@ -1,0 +1,13 @@
+<%- include('../partials/header') %>
+    <div class="container1">
+        <form action="/recipes/result" method="GET">
+            <fieldset>
+                <legend>Enter One Main Ingredient Item</legend>
+                <input type="text" id="IngredientInput" placeholder="Enter Ingredient">
+                <input type="submit" name="ingredient" value="Search Recipes">
+            </fieldset>
+        </form>
+    </div>
+    <img class ="recipe-image" src="/images/fridge.webp"
+    alt="image" width="250" height="500"/>
+<%- include('../partials/footer') %>

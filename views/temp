@@ -1,0 +1,36 @@
+
+    <body>
+        <div class="container4">
+            <h2>Search By Ingredients</h2>
+        </div> 
+    <style>
+        body { background-color: brown;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            align-items: center; 
+        } 
+        h1, h5, h3, h4   {color: beige}
+        h2   {color: black}
+        h4 {color: brown}
+    </style>
+    <% recipes.forEach(function(recipe) {%>
+        <h1 class="title"><%= recipe.strMeal %></h1>
+        <img src="<%= recipe.strMealThumb %>" alt="recipe image" width="250" height="200">
+    <% }) %>
+    
+
+
+
+
+    <style>
+        body { background-color: brown;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            align-items: center; 
+        } 
+        h1, h5, h3, h4   {color: beige}
+        h2   {color: black}
+        h4 {color: brown}
+    </style>
