@@ -34,7 +34,7 @@ router.get('/ingredient', (req, res) => {
 router.get('/result', (req, res) => {
     const { username, loggedIn, userId } = req.session
     // we have to make our api call
-    axios('https://www.themealdb.com/api/json/v1/1/filter.php?i$={ingredientQuery}')
+    axios(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${req.query.ingredient}`)
     // if we get data, render an index page
     .then(apiRes => {
     // apiRes.data is an array of objects
@@ -48,24 +48,17 @@ router.get('/result', (req, res) => {
     })
 })
 
-// POST -> /recipe/add
 // gets a recipe card from the recipe page and then
 //it can be saved to favorite page
-router.post('/favorite', (req, res) => {
-    const { username, loggedIn, userId } = req.session
-    const theRecipe = req.body
-    theRecipe.owner = userId
-    theRecipe.favorite = !!theRecipe.favorite
-    Recipe.create(theRecipe)
-    .then(newRecipe => {
-    res.send(newRecipe)
-    res.redirect(`/favorite`)
-    })
-    .catch(err => {
-    console.log('error')
-    res.redirect(`/error?error=${err}`)
-    })
-})
+//router.post('/favorite', (req, res) => {
+//    const { username, loggedIn, userId } = req.session
+//    if (user) {
+//        res.redirect('/recipes/favorite')
+//    }
+//    .catch(err => {
+//        console.log('error')
+//        res.redirect(`/error?error=${err}`)
+//    })
 
 //Export Router
 module.exports = router

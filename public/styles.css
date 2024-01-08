@@ -105,6 +105,21 @@ a    {
     flex-direction: column;
     justify-content: center;
 }
+.container6 { 
+    background-image: url('/images/recipes.jpeg');
+    color: brown;
+    width: 100%; 
+    height: 150px; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: cover;
+    align-items: center; 
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .ingredients-container {
     background-color:beige;
     display: flex;
@@ -121,7 +136,7 @@ a    {
 .btn-group {
     margin: 30px;
 }
-.threebutton-container {
+.button-container {
     display: flex;
     flex-direction: row;
 }
@@ -132,7 +147,7 @@ color:  beige;
 display: block;
 margin-top: 20px;
 }
-#secondButton {
+#secondButton, #homeButton {
 background-color: beige !important;
 color: black;
 display: block;

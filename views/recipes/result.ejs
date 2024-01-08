@@ -8,15 +8,11 @@
 </head>
 <body>
     <div class="container5">
-            <div class="threebutton-container">
-                <button id="thirdButton">Save Recipe</button>
-                <button id="firstButton">Home Page</button>
+            <div class="button-container">
+                <button id="homeButton">Home Page</button>
             </div>
         <script>
-            document.getElementById('thirdButton').addEventListener('click', function() {
-                location.href = '/favorite'
-            });
-            document.getElementById('firstButton').addEventListener('click', function() {
+            document.getElementById('homeButton').addEventListener('click', function() {
                 window.location.href = '/'
             });
         </script>
@@ -32,6 +28,10 @@
             h2   {color: black}
             h4 {color: brown}
         </style>
+        <% recipes.forEach(function(recipe) {%>
+            <h1 class="title"><%= recipe.strMeal %></h1>
+            <img src="<%= recipe.strMealThumb %>" alt="recipe image" width="250" height="200">
+        <% }) %>
     </div>
 </body>
 </html>

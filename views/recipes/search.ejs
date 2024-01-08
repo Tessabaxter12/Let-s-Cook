@@ -9,15 +9,11 @@
 <body>
     <div class="container4">
         <h2>Search All Recipes</h2>
-            <div class="threebutton-container">
-                <button id="thirdButton">Save Recipe</button>
+            <div class="button-container">
                 <button id="firstButton">Home Page</button>
                 <button id="secondButton">Next Recipe</button>
             </div>
         <script>
-            document.getElementById('thirdButton').addEventListener('click', function() {
-                location.href = '/favorite'
-            });
             document.getElementById('firstButton').addEventListener('click', function() {
                 window.location.href = '/'
             });
@@ -41,6 +37,15 @@
             <h1 class="title"><%= recipe.strMeal %></h1>
             <img src="<%= recipe.strMealThumb %>" alt="recipe image" width="250" height="200">
         <% }) %>
+        <div class="container1">
+            <form action="/recipes/favorite" method="POST">
+                <input type="hidden" name="id" value="<%=recipes[0].idMeal %>"/>
+                <fieldset>
+                    <legend>Save This Recipe To Your Favorites</legend>
+                    <input type="submit" value="Save Recipe">
+                </fieldset>
+            </form>
+        </div>
         <h2>Instructions</h2>
         <div class="instructions-container">
             <% recipes.forEach(function(recipe) {%>

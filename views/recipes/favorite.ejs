@@ -1,4 +1,41 @@
-<%- include('../partials/header') %>
-<h3>All <%= username %>'s Favorite Recipes</h3>
-
-<%- include('../partials/footer') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lets-Cook App</title>
+</head>
+<body>
+    <div class="container6">
+        <h3><%= username %>'s Favorite Recipes</h3>
+        <div class="button-container">
+                <button id="deleteButton">Save Recipe</button>
+                <button id="firstButton">Home Page</button>
+                <button id="secondButton">Next Recipe</button>
+            </div>
+        <script>
+            document.getElementById('deleteButton').addEvent.Listener('click', function() {
+                location.reload(); 
+            });
+            document.getElementById('firstButton').addEventListener('click', function() {
+                window.location.href = '/'
+            });
+            document.getElementById('secondButton').addEventListener('click', function() {
+                location.reload();
+            });
+        </script>
+        </div> 
+        <style>
+            body { background-color: brown;
+                display: flex;
+                text-align: center;
+                flex-direction: column;
+                align-items: center; 
+            } 
+            h1, h5, h3, h4   {color: beige}
+            h2   {color: black}
+            h4 {color: brown}
+        </style>
+</body>
+</html>
