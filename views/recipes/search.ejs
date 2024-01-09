@@ -5,53 +5,52 @@
     <link rel="stylesheet" href="/styles.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lets-Cook App</title>
+    <style>
+        body { background-color: brown;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            align-items: center; 
+        } 
+        h1, h5, h3, h4   {color: beige}
+        h2   {color: black}
+        h4 {color: brown}
+    </style>
 </head>
 <body>
     <div class="container4">
-        <h2>Search All Recipes</h2>
-            <div class="button-container">
-                <button id="firstButton">Home Page</button>
-                <button id="secondButton">Next Recipe</button>
-            </div>
+    <h2>Search All Recipes</h2>
+        <div class="button-container">
+            <button id="firstButton">Home Page</button>
+            <button id="secondButton">Next Recipe</button>
+        </div>
         <script>
-            document.getElementById('firstButton').addEventListener('click', function() {
-                window.location.href = '/'
-            });
-            document.getElementById('secondButton').addEventListener('click', function() {
-                location.reload();
-            });
+        document.getElementById('firstButton').addEventListener('click', function() {
+            window.location.href = '/'
+        });
+        document.getElementById('secondButton').addEventListener('click', function() {
+            location.reload();
+        });
         </script>
-        </div> 
-        <style>
-            body { background-color: brown;
-                display: flex;
-                text-align: center;
-                flex-direction: column;
-                align-items: center; 
-            } 
-            h1, h5, h3, h4   {color: beige}
-            h2   {color: black}
-            h4 {color: brown}
-        </style>
+    </div> 
+    <div class="container1">
         <% recipes.forEach(function(recipe) {%>
             <h1 class="title"><%= recipe.strMeal %></h1>
             <img src="<%= recipe.strMealThumb %>" alt="recipe image" width="250" height="200">
-        <% }) %>
-        <div class="container1">
+            <h1>Instructions</h1>
+            <div class="instructions-container">
+            <h3 class="instruction"><%= recipe.strInstructions %></h3>
+            </div>
             <form action="/recipes/favorite" method="POST">
-                <input type="hidden" name="id" value="<%=recipes[0].idMeal %>"/>
+                <input type="hidden" name="title" value="<%= recipe.strMeal %>"/>
+                <input type="hidden" name="id" value="<%= recipes[0].idMeal %>"/>
+                <input type="hidden" name="instructions" value="<%= recipe.strInstructions %>"/>
                 <fieldset>
                     <legend>Save This Recipe To Your Favorites</legend>
                     <input type="submit" value="Save Recipe">
                 </fieldset>
             </form>
-        </div>
-        <h2>Instructions</h2>
-        <div class="instructions-container">
-            <% recipes.forEach(function(recipe) {%>
-            <h3 class="instruction"><%= recipe.strInstructions %></h3>
-            <% }) %>
-        </div>
+        <% }) %>
     </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 //Import Dependencies
 const express = require('express')
 const axios = require('axios')
+const Recipe = require('../models/recipe')
 
 //Create Router
 const router = express.Router()
@@ -48,17 +49,40 @@ router.get('/result', (req, res) => {
     })
 })
 
-// gets a recipe card from the recipe page and then
-//it can be saved to favorite page
-//router.post('/favorite', (req, res) => {
-//    const { username, loggedIn, userId } = req.session
-//    if (user) {
-//        res.redirect('/recipes/favorite')
-//    }
-//    .catch(err => {
-//        console.log('error')
-//        res.redirect(`/error?error=${err}`)
-//    })
+//gets data from the recipe search page and add it to the users list
+router.post('/favorite', (req, res) => {
+    const { username, loggedIn, userId } = req.session
+    
+    const theRecipe = req.body
+    theRecipe.owner = userId
+    theRecipe.favorite = false
+
+    Recipe.create(theRecipe)
+        .then(newRecipe => {
+            res.redirect(`/recipes/favorite`)
+        })
+        .catch(err => {
+            console.log('error')
+            res.redirect(`/error?error=${err}`)
+        })
+})
+
+//displays all the user's saved favorites
+router.get('/favorite', (req, res) => {
+    const { username, loggedIn, userId } = req.session
+    // query the db for all pokemon belonging to the logged in user
+    Recipe.find({ owner: userId })
+        // display them in a list format
+        .then(userRecipe => {
+            console.log(userRecipe)
+            res.render('recipes/favorite', { recipes: userRecipe, username, loggedIn, userId })
+        })
+        // or display any errors
+        .catch(err => {
+            console.log('error')
+            res.redirect(`/error?error=${err}`)
+        })
+})
 
 //Export Router
 module.exports = router
