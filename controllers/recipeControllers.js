@@ -84,5 +84,35 @@ router.get('/favorite', (req, res) => {
         })
 })
 
+// Delete route
+// Remove Recipe from a user's list to an authorized user
+router.delete('/delete/:id', (req, res) => {
+const { username, loggedIn, userId } = req.session
+// target the specific place
+const recipeId = req.params.id
+// find it in the database
+Recipe.findById(recipeId)
+    // delete it 
+    .then(recipe => {
+        // determine if loggedIn user is authorized to delete this(aka, the owner)
+        if (recipe.owner == userId) {
+            // here is where we delete
+            return recipe.deleteOne()
+        } else {
+            // if the loggedIn user is NOT the owner
+            res.redirect(`/error?error=You%20Are%20Not%20Allowed%20to%20Delete%20this%20Pokemon`)
+        }
+    })
+    // redirect to another page
+    .then(deletedRecipe => {
+        res.redirect('/recipes/favorite')
+    })
+    // if err -> send to err page
+    .catch(err => {
+        console.log('error')
+        res.redirect(`/error?error=${err}`)
+    })
+})
+
 //Export Router
 module.exports = router

@@ -10,11 +10,17 @@
     h1   {color: black}
     h4 {color: brown}
 </style>
-    <div class="container6">
-    </div>
-        <h1><%= username %>'s Favorite Recipes</h1>
-        <div class="container1">
-            <% recipes.forEach(function(recipe) {%>
-                <h2 class="title"><%= recipe.title %></h2>
-            <% }) %>
+<div class="container6">
+</div>
+    <h1><%= username %>'s Favorite Recipes</h1>
+    <% recipes.forEach(function(recipe) { %>
+    <h2><%= recipe.title %><h2></td>
+        <form action="/delete/<%= recipe.title %>" method="delete">
+            <button type="submit">Delete</button>
+            <fieldset>
+                <input type="text" name="title" id="Title" placeholder="Enter New Title Name">
+                <input type="submit" value="Update Title">
+            </fieldset>
+        </form>
+    <% }) %>   
 <%- include('../partials/footer') %>
