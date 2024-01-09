@@ -70,7 +70,7 @@ router.post('/favorite', (req, res) => {
 //displays all the user's saved favorites
 router.get('/favorite', (req, res) => {
     const { username, loggedIn, userId } = req.session
-    // query the db for all pokemon belonging to the logged in user
+    // query the db for all recipe to the logged in user
     Recipe.find({ owner: userId })
         // display them in a list format
         .then(userRecipe => {
@@ -87,11 +87,10 @@ router.get('/favorite', (req, res) => {
 // Delete route
 // Remove Recipe from a user's list to an authorized user
 router.delete('/delete/:id', (req, res) => {
-const { username, loggedIn, userId } = req.session
-// target the specific place
-const recipeId = req.params.id
-// find it in the database
-Recipe.findById(recipeId)
+    const { username, loggedIn, userId } = req.session
+    // target the specific recipe
+    const recipeId = req.params.id
+    Recipe.find({ owner: userId })
     // delete it 
     .then(recipe => {
         // determine if loggedIn user is authorized to delete this(aka, the owner)
@@ -113,6 +112,42 @@ Recipe.findById(recipeId)
         res.redirect(`/error?error=${err}`)
     })
 })
+
+// UPDATE -> /recipe/update/:id
+router.put('/update/:id', (req, res) => {
+    const { username, loggedIn, userId } = req.session
+    // target the specific place
+    const recipeId = req.params.id
+
+    const theUpdatedRecipe = req.body
+
+    delete theUpdatedRecipe.owner
+    theUpdatedRecipe.owner = userId
+    // find the recipe
+    Place.findById(recipeIdId)
+        // check for authorization(aka ownership)
+        // if they are the owner, allow update and refresh the page
+        .then(foundRecipe => {
+            // determine if loggedIn user is authorized to update this(aka, the owner)
+            if (foundRecipe.owner == userId) {
+                // here is where we update
+                return foundRecipe.updateOne(theUpdatedRecipe)
+            } else {
+                // if the loggedIn user is NOT the owner
+                res.redirect(`/error?error=You%20Are%20Not%20Allowed%20to%20Update%20this%20Place`)
+            }
+        })
+        .then(returnedRecipe => {
+            res.redirect(`/favorive/${RecipeId}`)
+        })
+        // if not, send error
+        .catch(err => {
+            console.log('error')
+            res.redirect(`/error?error=${err}`)
+        })
+})
+
+
 
 //Export Router
 module.exports = router
