@@ -86,68 +86,44 @@ router.get('/favorite', (req, res) => {
 
 // Delete route
 // Remove Recipe from a user's list to an authorized user
-router.delete('/delete/:id', (req, res) => {
-    const { username, loggedIn, userId } = req.session
-    // target the specific recipe
-    const recipeId = req.params.id
-    Recipe.find({ owner: userId })
-    // delete it 
-    .then(recipe => {
-        // determine if loggedIn user is authorized to delete this(aka, the owner)
-        if (recipe.owner == userId) {
-            // here is where we delete
-            return recipe.deleteOne()
-        } else {
-            // if the loggedIn user is NOT the owner
-            res.redirect(`/error?error=You%20Are%20Not%20Allowed%20to%20Delete%20this%20Pokemon`)
-        }
-    })
-    // redirect to another page
-    .then(deletedRecipe => {
-        res.redirect('/recipes/favorite')
-    })
-    // if err -> send to err page
-    .catch(err => {
+router.post('/delete/:id', async (req, res) => {
+    try{
+        const { username, loggedIn, userId } = req.session
+          // get the recipe id from the url
+        const recipeId = req.params.id
+          // target the specific recipe
+        const recipe = await Recipe.findById(recipeId)
+      // determine if loggedIn user is authorized to delete this(aka, the owner)
+    if (recipe.owner == userId) {
+          // here is where we delete
+        await Recipe.findByIdAndDelete(recipeId)
+        return res.redirect('/recipes/favorite')
+    }
+    } catch(err) {
         console.log('error')
         res.redirect(`/error?error=${err}`)
-    })
+    }
 })
 
 // UPDATE -> /recipe/update/:id
-router.put('/update/:id', (req, res) => {
-    const { username, loggedIn, userId } = req.session
-    // target the specific place
-    const recipeId = req.params.id
-
-    const theUpdatedRecipe = req.body
-
-    delete theUpdatedRecipe.owner
-    theUpdatedRecipe.owner = userId
-    // find the recipe
-    Place.findById(recipeIdId)
-        // check for authorization(aka ownership)
-        // if they are the owner, allow update and refresh the page
-        .then(foundRecipe => {
-            // determine if loggedIn user is authorized to update this(aka, the owner)
-            if (foundRecipe.owner == userId) {
-                // here is where we update
-                return foundRecipe.updateOne(theUpdatedRecipe)
-            } else {
-                // if the loggedIn user is NOT the owner
-                res.redirect(`/error?error=You%20Are%20Not%20Allowed%20to%20Update%20this%20Place`)
-            }
-        })
-        .then(returnedRecipe => {
-            res.redirect(`/favorive/${RecipeId}`)
-        })
-        // if not, send error
-        .catch(err => {
-            console.log('error')
-            res.redirect(`/error?error=${err}`)
-        })
+router.post('/update/:id', async (req, res) => {
+    try{
+        const { username, loggedIn, userId } = req.session
+          // get the recipe id from the url
+        const recipeId = req.params.id
+          // target the specific recipe
+        const recipe = await Recipe.findById(recipeId)
+      // determine if loggedIn user is authorized to delete this(aka, the owner)
+    if (recipe.owner == userId) {
+          // here is where we update
+        await Recipe.findByIdAndUpdate(recipeId,{title:req.body.title})
+        return res.redirect('/recipes/favorite')
+    }
+    } catch(err) {
+        console.log('error')
+        res.redirect(`/error?error=${err}`)
+    }
 })
-
-
 
 //Export Router
 module.exports = router

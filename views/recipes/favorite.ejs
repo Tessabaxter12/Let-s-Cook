@@ -15,13 +15,13 @@
     <h1><%= username %>'s Favorite Recipes</h1>
     <% recipes.forEach(function(recipe) { %>
     <h2><%= recipe.title %><h2></td>
-        <form action="/delete/:id<%= recipe.title %>" method=delete/:id>
+        <form action="delete/<%= recipe._id %>" method=POST>
             <button type="submit">Delete</button>
         </form>
-        <form action="/update/:id<%= recipe.title %>" method=update/:id>
+        <form action="update/<%= recipe._id %>" method=POST>
             <fieldset>
                 <input type="text" name="title" id="Title" placeholder="Enter New Title Name">
-                <input type="submit" value="/update/:id">
+                <input type="submit" value="Submit">
             </fieldset>
         </form>
     <% }) %>   
