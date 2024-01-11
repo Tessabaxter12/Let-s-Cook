@@ -12,17 +12,35 @@
 </style>
 <div class="container6">
 </div>
-    <h1><%= username %>'s Favorite Recipes</h1>
-    <% recipes.forEach(function(recipe) { %>
-    <h2><%= recipe.title %><h2></td>
-        <form action="delete/<%= recipe._id %>" method=POST>
-            <button type="submit">Delete</button>
-        </form>
-        <form action="update/<%= recipe._id %>" method=POST>
-            <fieldset>
-                <input type="text" name="title" id="Title" placeholder="Enter New Title Name">
-                <input type="submit" value="Submit">
-            </fieldset>
-        </form>
-    <% }) %>   
+<h1><%= username %>'s Favorite Recipes</h1>
+<% if (recipes.length > 0) { %>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% recipes.forEach(function(recipe) { %>
+                <tr>
+                    <td><%= recipe.title %></td>
+                    <td>
+                        <form action="delete/<%= recipe._id %>" method="POST">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <form action="update/<%= recipe._id %>" method="POST">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="title" placeholder="Enter New Title Name">
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } else { %>
+    <%= "No recipes found." %>
+<% } %>
 <%- include('../partials/footer') %>

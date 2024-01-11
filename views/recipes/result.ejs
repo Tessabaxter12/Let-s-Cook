@@ -28,10 +28,16 @@
             h2   {color: black}
             h4 {color: brown}
         </style>
-        <% recipes.forEach(function(recipe) {%>
+        <% if (recipes && recipes.length > 0) { %>
+            <% recipes.forEach(function(recipe) { %>
             <h1 class="title"><%= recipe.strMeal %></h1>
             <img src="<%= recipe.strMealThumb %>" alt="recipe image" width="250" height="200">
-        <% }) %>    
+            <% }); %>
+        <% } else { %>
+            <h2><%= "Trouble in the kitchen. Try another ingredient." %></h2>
+            <img src="/images/ingredients.jpeg" width="250" height="200" style="margin-bottom: 20px;">
+            <a href="/recipes/ingredient">Go Back</a>
+        <% } %>
     </div>
 </body>
 </html>
